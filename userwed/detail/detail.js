@@ -1,12 +1,10 @@
-
+// lấy giá trị của tham số id từ URL
 function getId() {
   let urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("id");
 }
 async function getData() {
   let id = getId();
-
-
   try {
 
    let res = await axios.get(`http://localhost:3000/product/${id}`);

@@ -18,8 +18,8 @@ color: ;
 }
 
 .back-home:hover {
-  background-color: #d48806;   /* đổi màu khi hover */
-  transform: scale(1.05);      /* hơi phóng to */
+  background-color: #d48806;   
+  transform: scale(1.05);      
 }
 
 /* Khung ảnh chính */
@@ -61,18 +61,14 @@ color: ;
 .button {
   margin-top: 16px;          
   padding: 10px 20px;
-  background-color: #ff6600;
+  margin-right: 20px;
+  background-color: rgb(247, 173, 36);
   color: #fff;
   font-size: 16px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.button:hover {
-  background-color: #e65c00;
 }
 
 @media (max-width: 768px) {
