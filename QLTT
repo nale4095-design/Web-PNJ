@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quản lí thanh toán</title>
+
+<!-- link tới file css -->
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <!-- Logo PNJ trên cùng -->
+        <div class="sidebar-logo">
+            <img src="logopnj.png" alt="PNJ Logo">
+        </div>
+
+        <!-- Menu / danh mục quản lý -->
+        <nav class="sidebar-menu">
+            <h3>Danh mục quản lí</h3>
+            <a href="#">Quản lí đơn hàng</a>
+            <a href="#">Quản lí khách hàng</a>
+            <a href="#" class="active">Quản lí thanh toán</a>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="main">
+
+        <!-- Header / Topbar -->
+        <header class="topbar">
+            <div class="user-actions">
+                <span>👤 Your name</span>
+                <span>🔔</span>
+                <span>⚙️</span>
+            </div>
+        </header>
+
+        <!-- Search box -->
+        <div class="search-box">
+            <input type="text" placeholder="🔍 Tìm kiếm theo mã giao dịch/ mã đơn">
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mã GD</th>
+                    <th>Mã đơn</th>
+                    <th>Tên khách hàng</th>
+                    <th>Số tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày GD</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>h01</td>
+                    <td>01</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>600.000 VND</td>
+                    <td>Thành công</td>
+                    <td>18/2/2025</td>
+                    <td><button class="btn-pnj">Xem</button></td>
+                </tr>
+                <tr>
+                    <td>---</td>
+                    <td>---</td>
+                    <td>---</td>
+                    <td>---</td>
+                    <td>Chờ</td>
+                    <td>---</td>
+                    <td><button class="btn-pnj">Xác nhận</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
