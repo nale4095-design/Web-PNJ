@@ -1,87 +1,94 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Quản lí thanh toán</title>
-
-<!-- link tới file css -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Quản lý thanh toán</title>
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
-
 <div class="container">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <!-- Logo PNJ trên cùng -->
-        <div class="sidebar-logo">
-            <img src="logopnj.png" alt="PNJ Logo">
-        </div>
-
-        <!-- Menu / danh mục quản lý -->
-        <nav class="sidebar-menu">
-            <h3>Danh mục quản lí</h3>
-            <a href="#">Quản lí đơn hàng</a>
-            <a href="#">Quản lí khách hàng</a>
-            <a href="#" class="active">Quản lí thanh toán</a>
-        </nav>
-    </aside>
-
-    <!-- Main content -->
-    <div class="main">
-
-        <!-- Header / Topbar -->
-        <header class="topbar">
-            <div class="user-actions">
-                <span>👤 Your name</span>
-                <span>🔔</span>
-                <span>⚙️</span>
-            </div>
-        </header>
-
-        <!-- Search box -->
-        <div class="search-box">
-            <input type="text" placeholder="🔍 Tìm kiếm theo mã giao dịch/ mã đơn">
-        </div>
-
-        <!-- Table -->
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Mã GD</th>
-                    <th>Mã đơn</th>
-                    <th>Tên khách hàng</th>
-                    <th>Số tiền</th>
-                    <th>Trạng thái</th>
-                    <th>Ngày GD</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>h01</td>
-                    <td>01</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>600.000 VND</td>
-                    <td>Thành công</td>
-                    <td>18/2/2025</td>
-                    <td><button class="btn-pnj">Xem</button></td>
-                </tr>
-                <tr>
-                    <td>---</td>
-                    <td>---</td>
-                    <td>---</td>
-                    <td>---</td>
-                    <td>Chờ</td>
-                    <td>---</td>
-                    <td><button class="btn-pnj">Xác nhận</button></td>
-                </tr>
-            </tbody>
-        </table>
-
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <nav class="sidebar-menu">
+        <h4>DANH MỤC QUẢN LÝ</h4>
+        <a href="QLTT.html" class="active">Quản lý thanh toán</a>
+        <a href="QLDH.html">Quản lý đơn hàng</a>
+        <a href="QLKH.html">Quản lý khách hàng</a>
+      </nav>
     </div>
-</div>
+    <div class="sidebar-bottom">
+      <small>© 2025 • Hệ thống admin</small>
+    </div>
+  </aside>
 
+  <!-- MAIN -->
+  <main class="main">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-top">
+        <div class="avatar-user">
+          <div class="icon avatar">👤</div>
+          <div class="user-info">NA</div>
+        </div>
+        <div class="topbar-icons">
+          <i>🔔</i>
+          <i>⚙️</i>
+        </div>
+      </div>
+      <div class="topbar-bottom">
+        <div class="search-box">
+          <input placeholder="🔍 Tìm theo mã GD, mã đơn, tên khách..." />
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="cards">
+      <div class="card"><div class="card-title">Tổng giao dịch</div><div class="card-value">0</div></div>
+      <div class="card"><div class="card-title">Thành công</div><div class="card-value success">0</div></div>
+      <div class="card"><div class="card-title">Đang chờ</div><div class="card-value pending">0</div></div>
+      <div class="card"><div class="card-title">Thất bại</div><div class="card-value fail">0</div></div>
+    </section>
+
+    <section class="controls">
+      <div class="filter-row">
+        <select>
+          <option value="">-- Tất cả trạng thái --</option>
+          <option value="success">Thành công</option>
+          <option value="pending">Chờ xử lý</option>
+          <option value="fail">Thất bại</option>
+        </select>
+        <input type="date" />
+        <input type="date" />
+        <button class="btn-pnj">Lọc</button>
+        <button class="btn">Làm mới</button>
+      </div>
+      <div class="action-row">
+        <button class="btn-outline">Xuất CSV</button>
+        <button class="btn-outline">Xuất PDF</button>
+      </div>
+    </section>
+
+    <section class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Mã GD</th>
+            <th>Mã đơn</th>
+            <th>Tên khách hàng</th>
+            <th>Số tiền</th>
+            <th>Trạng thái</th>
+            <th>Ngày GD</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+</div>
 </body>
 </html>
