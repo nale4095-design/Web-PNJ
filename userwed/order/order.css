@@ -1,0 +1,66 @@
+body {
+    font-family: Arial;
+    background: #f3f3f3;
+}
+
+.container {
+    width: 450px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.back {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.order-box {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.order-box img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+.info p {
+    margin: 6px 0;
+}
+
+.coupon {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.coupon input {
+    flex: 1;
+    padding: 6px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-grid input {
+    padding: 8px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

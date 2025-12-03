@@ -65,7 +65,7 @@ function renderNavImg(product) {
 
 getData();
 
-// lấy dữ lieeujtuwf local stotage
+// lấy dữ liệu từ  local stotage
 function getCarts() {
   let data = localStorage.getItem("cart")
   return data ? JSON.parse(data) : []
@@ -98,3 +98,12 @@ function addToCart() {
   saveCart(Cart)
   //  console.log("Đã lưu giỏ hàng:", cart);
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    const orderBtn = document.getElementById("orderBtn");
+    if (orderBtn) {
+        orderBtn.href = `../order/order.html?id=${productId}`;
+    }
+});

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt hàng</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="index.html" class="back">← Quay lại</a>
+
+    <h2>THÔNG TIN ĐẶT HÀNG</h2>
+
+    <div id="orderBox" class="order-box">
+        <img id="productImg" src="" alt="product">
+
+        <div class="info">
+            <p><b>Tên sản phẩm:</b> <span id="productName"></span></p>
+            <p><b>Số lượng:</b> <input type="number" id="qty" value="1" min="1"></p>
+            <p><b>Đơn giá:</b> <span id="productPrice"></span> ₫</p>
+            <p><b>Tổng:</b> <span id="total"></span> ₫</p>
+        </div>
+    </div>
+
+    <div class="coupon">
+        <input type="text" placeholder="Nhập mã ưu đãi">
+        <button>Áp dụng</button>
+    </div>
+
+    <h3>Thông tin người mua</h3>
+    <div class="form-grid">
+        <input type="text" placeholder="Họ và tên">
+        <input type="text" placeholder="Địa chỉ">
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="Số điện thoại">
+    </div>
+
+    <h3>Hình thức thanh toán</h3>
+    <p>Thanh toán khi nhận hàng</p>
+
+    <button class="submit-btn">Đặt hàng</button>
+
+</div>
+
+<script src="order.js"></script>
+</body>
+</html>
