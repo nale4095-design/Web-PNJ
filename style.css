@@ -259,19 +259,13 @@ header nav .nav__right button {
 
 .owl-theme .owl-nav {
     position: absolute;
-    top: 50%; 
-    transform: translateY(-50%);
+    top: 50;
+    transform: translateX(-50%);
     width: 100%;
     display: flex;
     justify-content: space-between;
     font-size: 20px;
-    pointer-events: none; 
 }
-
-.owl-theme .owl-nav button {
-    pointer-events: auto; 
-}
-
 
 /* newcallection__conetnt */
 .newCollection {
@@ -290,6 +284,14 @@ header nav .nav__right button {
     gap: 20px;
 
 }
+
+/* .newCollection__content h2 {
+
+    margin-bottom: 40px;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 28px;
+} */
 
 .newCollection__content img {
     width: 100%;
@@ -343,7 +345,7 @@ header nav .nav__right button {
     object-fit: cover;
 }
 
-
+/* Owl Carousel chỉnh ảnh */
 .owl-carousel .owl-item img {
     display: block;
     width: 100%;
@@ -1024,12 +1026,34 @@ header nav .nav__right button {
   color: #0077b6;
 }
 
+/* Logo */
+.logoPNJ img {
+  max-width: 150px;
+  margin-bottom: 15px;
+}
+
+/* Social icons */
+.socialPNJ {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.socialPNJ img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s;
+}
+
+.socialPNJ img:hover {
+  transform: scale(1.1);
+}
 
 /* Discount info */
 .discountinfo h2 {
   font-size: 14px;
   margin-bottom: 5px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .discountinfo p {
@@ -1042,6 +1066,17 @@ header nav .nav__right button {
 }
 
 /* Dòng chứng nhận + thanh toán */
+.footerChild {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  padding: 20px 40px;
+  border-top: 1px solid #ddd;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 .footerChild h2 {
   font-size: 14px;
@@ -1053,23 +1088,6 @@ header nav .nav__right button {
 .certificationPNJ img {
     width: 60px;
   height: 20px;
-}
-.paymentPNJ h2{
-      font-size: 13px;
-  margin-bottom: 10px;
-
-  text-align: center;
-  text-transform: uppercase;
-}
-.paymentPNJ h6{
-     font-size: 13px;
-  margin-bottom: 10px;
-  text-align: center;
-  text-transform: uppercase;
-}
-.item_carosel a{
-    color: black;
-    text-decoration: none;
 }
 
 /* Responsive */

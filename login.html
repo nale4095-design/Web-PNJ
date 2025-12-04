@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      background: #f9f9f9;
+    }
+    .login-box {
+      display: flex;               /* CHIA 2 CỘT */
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 700px;
+    }
+    /* Cột bên trái (form) */
+    .login-form {
+      flex: 1;
+      padding: 30px;
+      text-align: center;
+      position: relative; /* thêm  X */
+    }
+
+    /*style của dấu X*/
+    .close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+    
+
+    .login-form h2 {
+      margin-bottom: 20px;
+    }
+    .login-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .login-form button {
+      width: 100%;
+      padding: 10px;
+      background: lightblue;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .login-form button:hover {
+      background: deepskyblue;
+      color: white;
+    }
+    .register {
+      display: block;
+      text-align: right;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    /* Cột bên phải (ảnh) */
+    .login-image {
+      flex: 1;
+      background: url("https://photo.znews.vn/w1920/Uploaded/wyhktpu/2016_07_26/01.png") center/cover no-repeat;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+
+    
+
+    <!-- Bên trái: form đăng nhập -->
+    <div class="login-form">
+        <a href="index.html" class="close-btn">×</a>
+
+
+       
+      <img src="https://img.icons8.com/ios-filled/100/000000/user.png" alt="user-icon">
+      <h2>ĐĂNG NHẬP</h2>
+      <input type="text" id="username" placeholder="Nhập tên tài khoản">
+      <input type="text" id="emailphone" placeholder="Nhập số điện thoại/email">
+      <input type="password" id="password" placeholder="Nhập mật khẩu">
+      <a href="#" class="register">Đăng kí tài khoản</a>
+      <button onclick="login()">Đăng nhập</button>
+      <p id="message" style="color:red;"></p>
+    </div>
+
+    <!-- Bên phải: ảnh -->
+    <div class="login-image"></div>
+  </div>
+
+  <script>
+    async function login() {
+      const userInput = document.getElementById("username").value.trim();
+      const emailPhone = document.getElementById("emailphone").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const msg = document.getElementById("message");
+
+      try {
+        const response = await fetch("users.json");
+        const users = await response.json();
+
+        const user = users.find(u => 
+          (u.username === userInput || u.email === emailPhone || u.phone === emailPhone) 
+          && u.password === password
+        );
+
+        if (user) {
+          msg.style.color = "green";
+          msg.textContent = "Đăng nhập thành công! Xin chào " + user.username;
+        } else {
+          msg.style.color = "red";
+          msg.textContent = "Sai tên đăng nhập hoặc mật khẩu!";
+        }
+      } catch (error) {
+        msg.textContent = "Không thể đọc dữ liệu!";
+      }
+    }
+  </script>
+</body>
+</html>
