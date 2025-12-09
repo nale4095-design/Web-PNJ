@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt hàng</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+<div class="order-container">
+
+    <div class="back-btn" onclick="history.back()">← Quay lại</div>
+
+    <h1 class="page-title">XÁC NHẬN ĐƠN HÀNG</h1>
+
+    <!-- CARD SẢN PHẨM -->
+    <div class="product-card">
+        <img id="orderImg" class="product-image">
+
+        <div class="product-details">
+            <h2 id="orderName" class="product-name"></h2>
+            <p class="price-label">Đơn giá: <span id="orderPrice"></span></p>
+
+            <div class="qty-wrapper">
+                <button id="minusBtn" class="qty-btn">−</button>
+                <span id="quantity" class="qty-number">1</span>
+                <button id="plusBtn" class="qty-btn">+</button>
+            </div>
+
+            <p class="total-label">
+                Tổng tiền: <span id="totalPrice" class="total-price"></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- FORM -->
+    <h2 class="section-title">Thông tin người nhận</h2>
+
+    <form class="form-box">
+        <div class="form-row">
+            <input id="fullname" class="input" placeholder="Họ và tên">
+            <input id="phone" class="input" placeholder="Số điện thoại">
+        </div>
+
+        <div class="form-row">
+            <input id="email" class="input" placeholder="Email">
+            <input id="address" class="input" placeholder="Địa chỉ giao hàng">
+        </div>
+    </form>
+
+    <h2 class="section-title">Hình thức thanh toán</h2>
+    <div class="payment-box">
+        <input type="radio" checked> Thanh toán khi nhận hàng
+    </div>
+
+    <button class="submit-btn" onclick="submitOrder()">Đặt hàng ngay</button>
+</div>
+
+<script src="order.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

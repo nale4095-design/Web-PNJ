@@ -1,31 +1,55 @@
-// Lấy id sản phẩm trên URL
 const params = new URLSearchParams(window.location.search);
-const productId = params.get("id");
+const id = params.get("id");
 
-if (!productId) {
-    alert("Không tìm thấy sản phẩm!");
+let product = null;
+let quantity = 1;
+
+// Lấy dữ liệu sản phẩm
+fetch(`http://localhost:3000/product/${id}`)
+    .then(res => res.json())
+    .then(data => {
+        product = data;
+
+        document.getElementById("orderImg").src = product.img;
+        document.getElementById("orderName").textContent = product.name;
+        document.getElementById("orderPrice").textContent =
+            Number(product.price).toLocaleString() + " ₫";
+
+        updateTotal();
+    });
+
+// Cập nhật tổng tiền
+function updateTotal() {
+    document.getElementById("quantity").textContent = quantity;
+    const total = product.price * quantity;
+    document.getElementById("totalPrice").textContent =
+        total.toLocaleString() + " ₫";
 }
 
-// Fetch sản phẩm từ JSON Server
-fetch(`http://localhost:3000/product/${productId}`)
-    .then(res => res.json())
-    .then(product => renderOrder(product))
-    .catch(() => alert("Không thể lấy dữ liệu sản phẩm"));
+// Tăng giảm SL
+document.getElementById("plusBtn").onclick = () => {
+    quantity++;
+    updateTotal();
+};
 
+document.getElementById("minusBtn").onclick = () => {
+    if (quantity > 1) {
+        quantity--;
+        updateTotal();
+    }
+};
 
-// Hiển thị sản phẩm
-function renderOrder(p) {
-    document.getElementById("productImg").src = p.img;
-    document.getElementById("productName").textContent = p.name;
-    document.getElementById("productPrice").textContent = Number(p.price).toLocaleString();
+// Đặt hàng
+function submitOrder() {
+    const fullname = document.getElementById("fullname").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
 
-    const qtyInput = document.getElementById("qty");
-    const totalEl = document.getElementById("total");
-
-    function updateTotal() {
-        totalEl.textContent = (p.price * qtyInput.value).toLocaleString();
+    if (!fullname || !address || !email || !phone) {
+        alert("Vui lòng điền đầy đủ thông tin!");
+        return;
     }
 
-    qtyInput.addEventListener("input", updateTotal);
-    updateTotal();
+    alert("🎉 Đặt hàng thành công!");
 }

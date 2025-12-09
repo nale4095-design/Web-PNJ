@@ -1,66 +1,165 @@
 body {
-    font-family: Arial;
-    background: #f3f3f3;
+    background: #f7f7f7;
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.container {
-    width: 450px;
-    margin: auto;
+/* CONTAINER */
+.order-container {
+    width: 750px;
+    margin: 40px auto;
     background: white;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.08);
 }
 
-.back {
-    text-decoration: none;
-    display: block;
+.back-btn {
+    cursor: pointer;
+    color: #b8860b;
+    font-size: 15px;
     margin-bottom: 10px;
 }
 
-.order-box {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
+/* TITLE */
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
 }
 
-.order-box img {
-    width: 120px;
-    height: 120px;
+/* PRODUCT CARD */
+.product-card {
+    display: flex;
+    gap: 25px;
+    padding: 20px;
+    border-radius: 16px;
+    background: #fff7e6;
+    border: 1px solid #f1d7a4;
+}
+
+.product-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 14px;
     object-fit: cover;
-    border: 1px solid #ccc;
+    border: 2px solid #eed8a0;
 }
 
-.info p {
-    margin: 6px 0;
+.product-details {
+    flex: 1;
 }
 
-.coupon {
+.product-name {
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #444;
+}
+
+.price-label {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.qty-wrapper {
     display: flex;
-    gap: 10px;
+    align-items: center;
     margin: 15px 0;
 }
 
-.coupon input {
-    flex: 1;
-    padding: 6px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.form-grid input {
-    padding: 8px;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background: black;
-    color: white;
+.qty-btn {
+    width: 40px;
+    height: 40px;
     border: none;
+    background: #d4af37;
+    color: white;
+    font-size: 22px;
     cursor: pointer;
+    border-radius: 8px;
+}
+
+.qty-number {
+    padding: 0 20px;
+    font-size: 20px;
+}
+
+.total-label {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.total-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d4af37;
+}
+
+/* FORM */
+.section-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #444;
+}
+
+.form-box {
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e8e8e8;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.input:focus {
+    border-color: #d4af37;
+    outline: none;
+    box-shadow: 0 0 5px rgba(212,175,55,0.4);
+}
+
+/* PAYMENT */
+.payment-box {
+    padding: 10px;
+    background: #fffce8;
+    border-radius: 8px;
+    border: 1px solid #f1e4b3;
+}
+
+/* BUTTON */
+.submit-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+
+    background: linear-gradient(to right, #d4af37, #f7d87c);
+    color: #4a4a4a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }

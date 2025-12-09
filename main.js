@@ -1,4 +1,52 @@
-// Hàm render các sản phẩm theo saleInfo hoặc keyword
+// =========================
+// 1. Cập nhật số lượng giỏ hàng
+// =========================
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountEl = document.getElementById("cartCount");
+    if (cartCountEl) cartCountEl.textContent = total;
+}
+
+// chạy khi mở trang
+updateCartCount();
+
+
+// =========================
+// 2. Xử lý THÊM VÀO GIỎ HÀNG
+// =========================
+document.addEventListener("click", function (e) {
+
+    // Nếu bấm vào icon hoặc text bên trong nút → lấy button cha
+    const btn = e.target.closest(".addToCartBtn");
+    if (!btn) return;
+
+    const id = btn.dataset.id;
+    const name = btn.dataset.name;
+    const price = Number(btn.dataset.price);
+    const img = btn.dataset.img;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let find = cart.find(p => p.id === id);
+
+    if (find) {
+        find.quantity++;
+    } else {
+        cart.push({
+            id, name, price, img, quantity: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+
+    alert("Đã thêm vào giỏ hàng!");
+});
+
+
+// =========================
+// 3. Render Carousel sản phẩm
+// =========================
 function renderCarousel(allProducts, selector, filterKeyword, isKeyword = false, itemsCount = 4) {
     const container = document.querySelector(selector);
     if (!container) {
@@ -26,20 +74,29 @@ function renderCarousel(allProducts, selector, filterKeyword, isKeyword = false,
             const paramsHTML = p.desPar.params.map(param => `<li>${param}</li>`).join("");
             infoHTML = `<div class="diamond-info"><ul>${paramsHTML}</ul><p>${p.desPar.desc}</p></div>`;
         }
+
         return `
-    <div class="item_carosel">
-     <img src="${p.img}" alt="${p.name}">
-        <a href="./userwed/detail/detail.html?id=${p.id}"target="_blank">
-            <p>${p.name}</p>
-        </a>
-        <h5>${Number(p.price).toLocaleString()}₫</h5>
-        <div class="review">5 sao - lượt bán</div>
-        ${infoHTML}
-    </div>
-`;
+        <div class="item_carosel">
+            <img src="${p.img}" alt="${p.name}">
+            <a href="./userwed/detail/detail.html?id=${p.id}" target="_blank">
+                <p>${p.name}</p>
+            </a>
+            <h5>${Number(p.price).toLocaleString()}₫</h5>
+            <div class="review">5 sao - lượt bán</div>
+
+            <button class="addToCartBtn"
+                    data-id="${p.id}"
+                    data-name="${p.name}"
+                    data-price="${p.price}"
+                    data-img="${p.img}">
+                Thêm vào giỏ
+            </button>
+
+            ${infoHTML}
+        </div>
+        `;
     }).join("");
 
-    // Init Owl Carousel
     $(selector).owlCarousel({
         loop: true,
         margin: 10,
@@ -53,7 +110,10 @@ function renderCarousel(allProducts, selector, filterKeyword, isKeyword = false,
     });
 }
 
-// Lấy dữ liệu và render tất cả section
+
+// =========================
+// 4. Lấy dữ liệu và render
+// =========================
 async function getData() {
     try {
         const res = await axios.get("http://localhost:3000/product");
@@ -70,14 +130,24 @@ async function getData() {
         renderCarousel(allProducts, ".Disney__owl-carousel", "Disney");
         renderCarousel(allProducts, ".PNJ__owl-carousel", "PNJ");
         renderCarousel(allProducts, ".Watch__owl-carousel", "Watch");
-    
 
     } catch (err) {
         console.error("Lỗi load dữ liệu:", err);
     }
 }
 
-// Gọi hàm khi DOM sẵn sàng
+
+// =========================
+// 5. Chuyển sang trang giỏ hàng
+// =========================
 $(document).ready(function () {
     getData();
 });
+
+// CHỈ GẮN SỰ KIỆN NẾU CÓ NÚT .btn-cart
+const btnCart = document.querySelector(".btn-cart");
+if (btnCart) {
+    btnCart.addEventListener("click", function () {
+        window.location.href = "cart.html";
+    });
+}

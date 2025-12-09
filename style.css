@@ -1110,3 +1110,14 @@ header nav .nav__right button {
     justify-content: center;
   }
 }
+/* css giỏ hàng */
+.btn-cart {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-cart:hover {
+    opacity: 0.7;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="back" onclick="history.back()">⬅ Quay lại</div>
+    <h2 class="title">GIỎ HÀNG</h2>
+
+    <div class="product-box">
+        <img id="pImg">
+        <div>
+            <p><b>Tên sản phẩm:</b> <span id="pName"></span></p>
+            <p><b>Số lượng:</b> <span>1</span></p>
+            <p><b>Số tiền:</b> <span id="pPrice"></span></p>
+        </div>
+    </div>
+
+    <button class="btn" onclick="goOrder()">Tiếp tục thanh toán</button>
+</div>
+
+<script src="cart.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
