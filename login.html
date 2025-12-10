@@ -12,6 +12,12 @@
       height: 90vh;
       background: #f9f9f9;
     }
+
+    * {
+    margin: 0;
+    padding: 0;
+    font-family: "Hedvig Letters Serif", serif;
+}
     .login-box {
       display: flex;               /* CHIA 2 CỘT */
       background: white;
@@ -44,8 +50,6 @@
   color: red;
 }
 
-
-    
     
 
     .login-form h2 {
@@ -104,6 +108,12 @@
       <input type="text" id="emailphone" placeholder="Nhập số điện thoại/email">
       <input type="password" id="password" placeholder="Nhập mật khẩu">
       <a href="#" class="register">Đăng kí tài khoản</a>
+
+      <select id="role" style="width:100%; padding:10px; margin-top:10px; border-radius:5px;">
+  <option value="user">Người dùng</option>
+  <option value="admin">Quản trị viên</option>
+</select>
+
       <button onclick="login()">Đăng nhập</button>
       <p id="message" style="color:red;"></p>
     </div>
@@ -114,32 +124,55 @@
 
   <script>
     async function login() {
-      const userInput = document.getElementById("username").value.trim();
-      const emailPhone = document.getElementById("emailphone").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const msg = document.getElementById("message");
+  const userInput = document.getElementById("username").value.trim();
+  const emailPhone = document.getElementById("emailphone").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const msg = document.getElementById("message");
 
-      try {
-        const response = await fetch("users.json");
-        const users = await response.json();
+  try {
 
-        const user = users.find(u => 
-          (u.username === userInput || u.email === emailPhone || u.phone === emailPhone) 
-          && u.password === password
-        );
+    console.log(users);
+console.log(admins);
 
-        if (user) {
-          msg.style.color = "green";
-          msg.textContent = "Đăng nhập thành công! Xin chào " + user.username;
-        } else {
-          msg.style.color = "red";
-          msg.textContent = "Sai tên đăng nhập hoặc mật khẩu!";
-        }
-      } catch (error) {
-        msg.textContent = "Không thể đọc dữ liệu!";
-      }
+    // --- Đọc dữ liệu người dùng ---
+    const resUsers = await fetch("users.json");
+    const users = await resUsers.json();
+
+    // --- Đọc dữ liệu admin ---
+    const resAdmin = await fetch("admin.json");
+    const admins = await resAdmin.json();
+
+    // --- Kiểm tra ADMIN ---
+    const admin = admins.find(a =>
+      (a.username === userInput || a.email === emailPhone || a.phone === emailPhone)
+      && a.password === password
+    );
+
+    if (admin) {
+      msg.style.color = "green";
+      msg.textContent = "Đăng nhập ADMIN thành công! Xin chào " + admin.username;
+      return;
     }
+
+    // --- Kiểm tra USER ---
+    const user = users.find(u =>
+      (u.username === userInput || u.email === emailPhone || u.phone === emailPhone)
+      && u.password === password
+    );
+
+    if (user) {
+      msg.style.color = "green";
+      msg.textContent = "Đăng nhập thành công! Xin chào " + user.username;
+    } else {
+      msg.style.color = "red";
+      msg.textContent = "Sai tên đăng nhập hoặc mật khẩu!";
+    }
+
+  } catch (error) {
+    msg.textContent = "Không thể đọc dữ liệu!";
+  }
+}
+
   </script>
 </body>
 </html>
-
