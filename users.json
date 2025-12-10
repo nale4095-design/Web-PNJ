@@ -1,0 +1,38 @@
+[
+  {
+    "username": "user1",
+    "email": "user1@gmail.com",
+    "phone": "0909123456",
+    "password": "123456"
+  },
+  {
+    "username": "ngocanh",
+    "email": "anh22@gmail.com",
+    "phone": "0911222333",
+    "password": "anh123"
+  },
+  {
+    "username": "khai2004",
+    "email": "khaizz@gmail.com",
+    "phone": "0988112233",
+    "password": "khai2004"
+  },
+  {
+    "username": "hoangvip",
+    "email": "hoangvip@gmail.com",
+    "phone": "0909445566",
+    "password": "hoangvip123"
+  },
+  {
+    "username": "miu",
+    "email": "miu.nguyen@gmail.com",
+    "phone": "0933778899",
+    "password": "miu2003"
+  },
+  {
+    "username": "thanh",
+    "email": "thanhtruong@gmail.com",
+    "phone": "0977112233",
+    "password": "thanh123"
+  }
+]

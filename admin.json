@@ -1,0 +1,26 @@
+[
+  {
+    "username": "admin",
+    "email": "admin@gmail.com",
+    "phone": "0000",
+    "password": "admin123"
+  },
+  {
+    "username": "superadmin",
+    "email": "super@gmail.com",
+    "phone": "1111",
+    "password": "super123"
+  },
+  {
+    "username": "manager1",
+    "email": "manager1@system.com",
+    "phone": "0222333444",
+    "password": "manager01"
+  },
+  {
+    "username": "root",
+    "email": "root@admin.com",
+    "phone": "9999",
+    "password": "rootaccess"
+  }
+]
