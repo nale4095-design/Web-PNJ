@@ -127,56 +127,76 @@
 
   <script>
     async function login() {
-  const userInput = document.getElementById("username").value.trim();
-  const emailPhone = document.getElementById("emailphone").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const msg = document.getElementById("message");
+        // Lấy giá trị đầu vào
+        const userInput = document.getElementById("username").value.trim();
+        const emailPhone = document.getElementById("emailphone").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const role = document.getElementById("role").value; // Lấy giá trị vai trò (user/admin)
+        const msg = document.getElementById("message");
+        msg.textContent = ""; // Xóa thông báo cũ
 
-  try {
+        try {
+            // --- Đọc dữ liệu người dùng (users.json) ---
+            // GIẢ SỬ file users.json đã có dữ liệu bạn cung cấp
+            const resUsers = await fetch("users.json");
+            if (!resUsers.ok) throw new Error("Không tìm thấy users.json");
+            const users = await resUsers.json();
 
-    console.log(users);
-console.log(admins);
+            // --- Đọc dữ liệu admin (admin.json) ---
+            // BẠN CẦN TẠO FILE admin.json
+            const resAdmin = await fetch("admin.json");
+            if (!resAdmin.ok) throw new Error("Không tìm thấy admin.json");
+            const admins = await resAdmin.json();
 
-    // --- Đọc dữ liệu người dùng ---
-    const resUsers = await fetch("users.json");
-    const users = await resUsers.json();
+            let isLoggedIn = false;
 
-    // --- Đọc dữ liệu admin ---
-    const resAdmin = await fetch("admin.json");
-    const admins = await resAdmin.json();
+            // --- Xử lý theo Vai trò đã chọn ---
 
-    // --- Kiểm tra ADMIN ---
-    const admin = admins.find(a =>
-      (a.username === userInput || a.email === emailPhone || a.phone === emailPhone)
-      && a.password === password
-    );
+            if (role === "admin") {
+                // Kiểm tra ADMIN sau khi login thanh cong
+                const admin = admins.find(a =>
+                    (a.username === userInput || a.email === emailPhone || a.phone === emailPhone)
+                    && a.password === password
+                );
 
-    if (admin) {
-      msg.style.color = "green";
-      msg.textContent = "Đăng nhập ADMIN thành công! Xin chào " + admin.username;
-      return;
+                if (admin) {
+                    msg.style.color = "green";
+                    msg.textContent = "Đăng nhập ADMIN thành công! Xin chào " + admin.username;
+                    // --- CHUYỂN HƯỚNG ADMIN ---
+                    window.location.href = "dashboard.html"; // Chuyển đến trang dashboard
+                    isLoggedIn = true;
+                }
+            } 
+            
+            if (!isLoggedIn && role === "user") {
+                // Kiểm tra USER sau khi login thanh cong
+                const user = users.find(u =>
+                    (u.username === userInput || u.email === emailPhone || u.phone === emailPhone)
+                    && u.password === password
+                );
+
+                if (user) {
+                    msg.style.color = "green";
+                    msg.textContent = "Đăng nhập thành công! Xin chào " + user.username;
+                    // --- CHUYỂN HƯỚNG USER ---
+                    window.location.href = "index.html"; // Chuyển đến trang home
+                    isLoggedIn = true;
+                }
+            }
+
+            // Nếu không đăng nhập thành công
+            if (!isLoggedIn) {
+                msg.style.color = "red";
+                msg.textContent = "Sai tên đăng nhập hoặc mật khẩu cho vai trò đã chọn!";
+            }
+
+        } catch (error) {
+            console.error("Lỗi: ", error);
+            msg.style.color = "red";
+            msg.textContent = "Lỗi hệ thống: Không thể đọc dữ liệu cần thiết!";
+        }
     }
-
-    // --- Kiểm tra USER ---
-    const user = users.find(u =>
-      (u.username === userInput || u.email === emailPhone || u.phone === emailPhone)
-      && u.password === password
-    );
-
-    if (user) {
-      msg.style.color = "green";
-      msg.textContent = "Đăng nhập thành công! Xin chào " + user.username;
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Sai tên đăng nhập hoặc mật khẩu!";
-    }
-
-  } catch (error) {
-    msg.textContent = "Không thể đọc dữ liệu!";
-  }
-}
-
+</script>
   </script>
 </body>
 </html>
-
