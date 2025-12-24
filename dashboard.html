@@ -1,0 +1,368 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Dashboard</title>
+
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet" href="assets/modules/bootstrap-5.1.3/css/bootstrap.css">
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- FontAwesome CSS-->
+	<link rel="stylesheet" href="assets/modules/fontawesome6.1.1/css/all.css">
+	<!-- Boxicons CSS-->
+	<link rel="stylesheet" href="assets/modules/boxicons/css/boxicons.min.css">
+	<!-- Apexcharts  CSS -->
+	<link rel="stylesheet" href="assets/modules/apexcharts/apexcharts.css">
+</head>
+<body>
+  
+  <!--Topbar -->
+  <div class="topbar transition">
+	<div class="bars">
+		<button type="button" class="btn transition" id="sidebar-toggle">
+			<i class="fa fa-bars"></i>
+		</button>
+	</div>
+		<div class="menu">
+			<ul>
+				<li class="nav-item dropdown dropdown-list-toggle">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					   <i class="fa fa-bell size-icon-1"></i><span class="badge bg-danger notif">3</span>
+					</a> 				 
+					<div class="dropdown-menu dropdown-list">
+						<div class="dropdown-header">Thông báo</div>
+						<div class="dropdown-list-content dropdown-list-icons">
+							<div class="custome-list-notif"> 
+							<a href="#" class="dropdown-item dropdown-item-unread">
+								<div class="dropdown-item-icon bg-primary text-white">
+								  <i class="fas fa-code"></i>
+								</div>
+								<div class="dropdown-item-desc">
+									Mẫu trang sức mới đã được cập nhật!
+								  <div class="time text-primary">3 phút trước</div>
+								</div>
+							  </a>
+
+							  <a href="#" class="dropdown-item">
+								<div class="dropdown-item-icon bg-info text-white">
+								  <i class="far fa-user"></i>
+								</div>
+								<div class="dropdown-item-desc">
+                                 Có một người yêu cầu bạn kết bạn!					
+								  <div class="time">12 giờ trước</div>
+								</div>
+							  </a>
+
+							  <a href="#" class="dropdown-item">
+								<div class="dropdown-item-icon bg-danger text-white">
+								  <i class="fas fa-check"></i>
+								</div>
+								<div class="dropdown-item-desc">
+									  Kho lưu trữ đã được dọn sạch!
+								  <div class="time">Hôm qua</div>
+								</div>
+							  </a>
+
+ 
+							</div>
+						</div>
+
+						<div class="dropdown-footer text-center">
+						  <a href="#">Tất cả</a>
+						</div>
+
+					  
+				  </li>
+			 
+				  <li class="nav-item dropdown">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  <img src="assets/images/avatar/avatar-1.png" alt="">
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"><i class="fa fa-user size-icon-1"></i> <span>Hồ sơ</span></a>
+						<a class="dropdown-item"><i class="fa fa-cog size-icon-1"></i> <span>Cài đặt</span></a>
+						<hr class="dropdown-divider">
+						<a class="dropdown-item"><i class="fa fa-sign-out-alt  size-icon-1"></i> <span>Đăng xuất</span></a>
+					</ul>
+				  </li>
+			</ul>
+		</div>
+	</div>
+
+	<!--Sidebar-->
+	<div class="sidebar transition overlay-scrollbars animate__animated  animate__slideInLeft">
+        <div class="sidebar-content"> 
+        	<div id="sidebar">
+			
+			
+            <ul class="side-menu">
+                <li>
+					<a href="dashboard.html" class="active">
+						<i class='bx bxs-dashboard icon' ></i> Dashboard
+					</a>
+				</li>
+
+
+            <div class="ads">
+				<div class="wrapper">
+					<div class="help-icon"><i class="fa fa-circle-question fa-3x"></i></div>
+					<p>Need Help with <strong>Atrana</strong>?</p>
+                    <a  class="btn-upgrade">Documentation</a>
+                 </div>
+            </div>
+        </div>
+
+       </div> 
+	 </div>
+	</div><!-- End Sidebar-->
+
+
+	<div class="sidebar-overlay"></div>
+
+
+	<!--Content Start-->
+	<div class="content-start transition">
+		<div class="container-fluid dashboard">
+			<div class="content-header">
+				<h1>Dashboard</h1>
+				<p></p>
+			</div>
+			
+			<div class="row">
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-4 d-flex align-items-center">
+									<i class="fas fa-inbox icon-home bg-primary text-light"></i>
+								</div>
+								<div class="col-8">
+									<p>Doanh thu</p>
+									<h5>132.499.000VNĐ</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-4 d-flex align-items-center">
+									<i class="fas fa-clipboard-list icon-home bg-success text-light"></i>
+								</div>
+								<div class="col-8">
+									<p>Đơn đặt hàng</p>
+									<h5>3000</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-4 d-flex align-items-center">
+									<i class="fas fa-chart-bar  icon-home bg-info text-light"></i>
+								</div>
+								<div class="col-8">
+									<p>Đơn dã bán</p>
+									<h5>5500</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-4 d-flex align-items-center">
+									<i class="fas fa-id-card  icon-home bg-warning text-light"></i>
+								</div>
+								<div class="col-8">
+									<p>Nhân sự</p>
+									<h5>256</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+		
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+						</div>
+						<div class="card-body">
+							<div id="columnchart"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							<h4>Đơn hàng gần đây</h4>
+						</div>
+						<div class="card-body pb-4">
+							<div class="recent-message d-flex px-4 py-3">
+								<div class="avatar avatar-lg">
+									<img src="assets/images/message/4.jpg">
+								</div>
+								<div class="name ms-4">
+									<h5 class="mb-1">Nguyễn Văn Tài</h5>
+									<h6 class="text-muted mb-0">tai122@gmail.com</h6>
+								</div>
+							</div>
+							<div class="recent-message d-flex px-4 py-3">
+								<div class="avatar avatar-lg">
+									<img src="assets/images/message/5.jpg">
+								</div>
+								<div class="name ms-4">
+									<h5 class="mb-1">Nguyễn Hương</h5>
+									<h6 class="text-muted mb-0">huong000@gmail.com</h6>
+								</div>
+							</div>
+							<div class="recent-message d-flex px-4 py-3">
+								<div class="avatar avatar-lg">
+									<img src="assets/images/message/1.jpg">
+								</div>
+								<div class="name ms-4">
+									<h5 class="mb-1">Lê Thị Thắm</h5>
+									<h6 class="text-muted mb-0">tham123@gmail.com</h6>
+								</div>
+							</div>
+							<div class="px-4">
+								<button class='btn btn-block btn-xl btn-primary font-bold mt-3'>Bắt đầu trò chuyện</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<h4>Giao dịch mới nhất</h4>
+						</div>
+						<div class="card-body"> 
+						<div class="table-responsive"> 
+						<table class="table table-striped">
+							<thead>
+							  <tr>
+								<th scope="col">Mã đơn hàng</th>
+								<th scope="col">Tên khách hàng</th>
+								<th scope="col">Ngày</th>
+								<th scope="col">Tổng thanh toán</th>
+								<th scope="col">trạng thái thanh toán</th>
+								<th scope="col">Phương thức thanh toán</th>
+								<th scope="col">Xem chi tiết</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<th scope="row">KH235</th>
+								<td>Nguyễn Kiều Nga</td>
+								<td>07/10/2025</td>
+								<td>6.500.000VNĐ</td>
+								<td><span class="text-success">Đã thanh toán</span></td>
+								<td>Tiền mặt</td>
+								<td><button class="btn btn-primary">Xem</button></td>
+							  </tr>
+
+							  <tr>
+								<th scope="row">KH254	</th>
+								<td>Trần Thị Kiều</td>
+								<td>22/10/2025</td>
+								<td>12.350.000VNĐ</td>
+								<td><span class="text-success">Đã thanh toán</span></td>
+								<td>Tiền mặt</td>
+								<td><button class="btn btn-primary">Xem</button></td>
+							  </tr>
+
+							  <tr>
+								<th scope="row">#SK257	</th>
+								<td>Nguyễn Ngọc</td>
+								<td>23/10/2025</td>
+								<td>3.990.000VNĐ</td>
+								<td><span class="text-success">Đã thanh toán</span></td>
+								<td>Tiền mặt</td>
+								<td><button class="btn btn-primary">Xem</button></td>
+							  </tr>
+
+							  <tr>
+								<th scope="row">KH278	</th>
+								<td>Lê Hoàng Dung</td>
+								<td>01/11/2025</td>
+								<td>4.000.000VNĐ</td>
+								<td><span class="text-success">Đã thanh toán</span></td>
+								<td>Tiền mặt</td>
+								<td><button class="btn btn-primary">Xem</button></td>
+							  </tr>
+							</tbody>
+						  </table>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+		   </div>
+		</div>
+	</div>
+
+
+	<!-- Footer -->				
+	<footer>
+		<div class="footer">
+			<div class="float-start">
+				<p>2025 &copy; </p>
+			</div>
+				<div class="float-end">
+					<p>Crafted with 
+						<span class="text-danger">
+							<i class="fa fa-heart"></i> by 
+							
+					</p>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Preloader -->
+	<div class="loader">
+		<div class="spinner-border text-light" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+	
+	<!-- Loader -->
+	<div class="loader-overlay"></div>
+
+	<!-- General JS Scripts -->
+	<script src="assets/js/atrana.js"></script>
+
+	<!-- JS Libraies -->
+	<script src="assets/modules/jquery/jquery.min.js"></script>
+	<script src="assets/modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/modules/popper/popper.min.js"></script>
+
+	<!-- Chart Js -->
+	<script src="assets/modules/apexcharts/apexcharts.js"></script>
+	<script src="assets/js/ui-apexcharts.js"></script>
+
+    <!-- Template JS File -->
+	<script src="assets/js/script.js"></script>
+	<script src="assets/js/custom.js"></script>
+ </body>
+</html>

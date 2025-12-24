@@ -1,0 +1,79 @@
+.detail {
+  padding: 20px 0;
+}
+
+.detail__content {
+  max-width: 1000px;
+  display: flex;
+  gap: 30px;
+  margin: auto;
+}
+
+.detail__left {
+  display: flex;
+  gap: 10px;
+}
+.back__home{
+color: ;
+}
+
+.back-home:hover {
+  background-color: #d48806;   
+  transform: scale(1.05);      
+}
+
+/* Khung ảnh chính */
+.detail__img img {
+    background-color: rgb(238, 235, 235);
+  width: 450px;
+  height: 420px;
+  border-radius: 5px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+/* Cột ảnh phụ */
+.nav__img {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__img img {
+  margin: 5px 0;
+  width: 74px;
+  height: 74px;
+  border-radius: 5px;
+  object-fit: cover; 
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: border-color 0.2s;
+}
+
+.nav__img img:hover {
+  border-color: #000;
+}
+
+/* Khung thông tin sản phẩm */
+.detail__text {
+  flex: 1;
+}
+/* css button */
+.button {
+  margin-top: 16px;          
+  padding: 10px 20px;
+  margin-right: 20px;
+  background-color: rgb(247, 173, 36);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}

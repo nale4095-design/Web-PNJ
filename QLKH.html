@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quản lý khách hàng</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <nav class="sidebar-menu">
+          <h4>DANH MỤC QUẢN LÝ</h4>
+          <a href="QLTT.html">Quản lý thanh toán</a>
+        <a href="QLDH.html">Quản lý đơn hàng</a>
+        <a href="QLKH.html" class="active">Quản lý khách hàng</a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <small>© 2025 • Hệ thống admin</small>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-top">
+          <div class="avatar-user">
+            <div class="icon avatar">NA</div>
+          </div>
+          <div class="topbar-icons">
+            <i>🔔</i>
+            <i>⚙️</i>
+          </div>
+        </div>
+        <div class="topbar-bottom">
+          <div class="search-box">
+            <input placeholder="🔍 Tìm khách hàng theo tên, email..." />
+          </div>
+        </div>
+      </header>
+
+      <!-- FILTER -->
+      <section class="controls">
+        <div class="filter-row">
+          <input type="text" placeholder="Tìm theo tên, email..." />
+          <button class="btn-pnj">Lọc</button>
+          <button class="btn">Làm mới</button>
+        </div>
+      </section>
+
+      <!-- TABLE -->
+      <section class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Tên khách hàng</th>
+              <th>Email</th>
+              <th>SDT</th>
+              <th>Ngày đăng kí</th>
+              <th>Số lượng đã đặt</th>
+              <th>Tổng chi tiêu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dữ liệu khách hàng sẽ hiển thị ở đây -->
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
