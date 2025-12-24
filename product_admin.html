@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="product_admin.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="menu-btn">☰</div>
+        <p class="sidebar-title">Quản lý sản phẩm</p>
+        <input class="search-box" id="searchBox" type="text" placeholder="Tìm kiếm nhanh">
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <div class="top-bar">
+            <button class="add-btn" onclick="alert('Chức năng thêm sẽ làm sau')">Thêm sản phẩm</button>
+        </div>
+
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã SP</th>
+                    <th>Tên</th>
+                    <th>Hình ảnh</th>
+                    <th>Giá</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="productBody">
+            </tbody>
+        </table>
+
+    </main>
+</div>
+
+<script src="product_admin.js"></script>
+</body>
+</html>
