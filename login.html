@@ -14,54 +14,55 @@
     }
 
     * {
-    margin: 0;
-    padding: 0;
-    font-family: "Hedvig Letters Serif", serif;
-}
+      margin: 0;
+      padding: 0;
+      font-family: "Hedvig Letters Serif", serif;
+    }
+
     .login-box {
-      display: flex;               /* CHIA 2 CỘT */
+      display: flex;
       background: white;
       border-radius: 10px;
       box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
       overflow: hidden;
       width: 700px;
     }
-    /* Cột bên trái (form) */
+
     .login-form {
       flex: 1;
       padding: 30px;
       text-align: center;
-      position: relative; /* thêm  X */
+      position: relative;
     }
 
-    /*style của dấu X*/
     .close-btn {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 22px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-  cursor: pointer;
-}
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+      cursor: pointer;
+    }
 
-.close-btn:hover {
-  color: red;
-}
-
-    
+    .close-btn:hover {
+      color: red;
+    }
 
     .login-form h2 {
       margin-bottom: 20px;
     }
-    .login-form input {
+
+    .login-form input,
+    .login-form select {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+
     .login-form button {
       width: 100%;
       padding: 10px;
@@ -72,131 +73,108 @@
       cursor: pointer;
       margin-top: 10px;
     }
+
     .login-form button:hover {
       background: deepskyblue;
       color: white;
     }
+
     .register {
-      display: block;
       text-align: right;
-      margin-top: 5px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       font-size: 14px;
-      
     }
-    /* Cột bên phải (ảnh) */
+
     .login-image {
       flex: 1;
-      background: url("https://photo.znews.vn/w1920/Uploaded/wyhktpu/2016_07_26/01.png") center/cover no-repeat;
+      background: url("https://photo.znews.vn/w1920/Uploaded/wyhktpu/2016_07_26/01.png")
+        center/cover no-repeat;
     }
   </style>
 </head>
 <body>
 
-  <div class="login-box">
+<div class="login-box">
+  <div class="login-form">
+    <a href="index.html" class="close-btn">×</a>
 
-    
+    <img src="https://img.icons8.com/ios-filled/100/000000/user.png">
+    <h2>ĐĂNG NHẬP</h2>
 
-    <!-- Bên trái: form đăng nhập -->
-    <div class="login-form">
-        <a href="index.html" class="close-btn">×</a>
+    <input type="text" id="username" placeholder="Nhập tên tài khoản">
+    <input type="text" id="emailphone" placeholder="Nhập email / số điện thoại">
+    <input type="password" id="password" placeholder="Nhập mật khẩu">
 
-
-       
-      <img src="https://img.icons8.com/ios-filled/100/000000/user.png" alt="user-icon">
-      <h2>ĐĂNG NHẬP</h2>
-      <input type="text" id="username" placeholder="Nhập tên tài khoản">
-      <input type="text" id="emailphone" placeholder="Nhập số điện thoại/email">
-      <input type="password" id="password" placeholder="Nhập mật khẩu">
-      <div class=register>
+    <div class="register">
       <a href="Dki.html">Đăng kí tài khoản</a>
-      </div>
-
-      <select id="role" style="width:100%; padding:10px; margin-top:10px; border-radius:5px;">
-  <option value="user">Người dùng</option>
-  <option value="admin">Quản trị viên</option>
-</select>
-
-      <button onclick="login()">Đăng nhập</button>
-      <p id="message" style="color:red;"></p>
     </div>
 
-    <!-- Bên phải: ảnh -->
-    <div class="login-image"></div>
+    <select id="role">
+      <option value="user">Người dùng</option>
+      <option value="admin">Quản trị viên</option>
+    </select>
+
+    <button onclick="login()">Đăng nhập</button>
+    <p id="message"></p>
   </div>
 
-  <script>
-    async function login() {
-        // Lấy giá trị đầu vào
-        const userInput = document.getElementById("username").value.trim();
-        const emailPhone = document.getElementById("emailphone").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const role = document.getElementById("role").value; // Lấy giá trị vai trò (user/admin)
-        const msg = document.getElementById("message");
-        msg.textContent = ""; // Xóa thông báo cũ
+  <div class="login-image"></div>
+</div>
 
-        try {
-            // --- Đọc dữ liệu người dùng (users.json) ---
-            // GIẢ SỬ file users.json đã có dữ liệu bạn cung cấp
-            const resUsers = await fetch("users.json");
-            if (!resUsers.ok) throw new Error("Không tìm thấy users.json");
-            const users = await resUsers.json();
+<script>
+async function login() {
+    const userInput = document.getElementById("username").value.trim();
+    const emailPhone = document.getElementById("emailphone").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const role = document.getElementById("role").value;
+    const msg = document.getElementById("message");
+    msg.textContent = "";
 
-            // --- Đọc dữ liệu admin (admin.json) ---
-            // BẠN CẦN TẠO FILE admin.json
-            const resAdmin = await fetch("admin.json");
-            if (!resAdmin.ok) throw new Error("Không tìm thấy admin.json");
-            const admins = await resAdmin.json();
+    try {
+        if (role === "admin") {
+            const res = await fetch("admin.json");
+            const admins = await res.json();
 
-            let isLoggedIn = false;
+            const admin = admins.find(a =>
+                (a.username === userInput || a.email === emailPhone || a.phone === emailPhone) &&
+                a.password === password
+            );
 
-            // --- Xử lý theo Vai trò đã chọn ---
-
-            if (role === "admin") {
-                // Kiểm tra ADMIN sau khi login thanh cong
-                const admin = admins.find(a =>
-                    (a.username === userInput || a.email === emailPhone || a.phone === emailPhone)
-                    && a.password === password
-                );
-
-                if (admin) {
-                    msg.style.color = "green";
-                    msg.textContent = "Đăng nhập ADMIN thành công! Xin chào " + admin.username;
-                    // --- CHUYỂN HƯỚNG ADMIN ---
-                   window.location.href = "dashboard.html"; // Chuyển đến trang dashboard
-                    isLoggedIn = true;
-                }
-            } 
-            
-            if (!isLoggedIn && role === "user") {
-                // Kiểm tra USER sau khi login thanh cong
-                const user = users.find(u =>
-                    (u.username === userInput || u.email === emailPhone || u.phone === emailPhone)
-                    && u.password === password
-                );
-
-                if (user) {
-                    msg.style.color = "green";
-                    msg.textContent = "Đăng nhập thành công! Xin chào " + user.username;
-                    // --- CHUYỂN HƯỚNG USER ---
-                    window.location.href = "index.html"; // Chuyển đến trang home
-                    isLoggedIn = true;
-                }
+            if (admin) {
+                msg.style.color = "green";
+                msg.textContent = "Đăng nhập ADMIN thành công!";
+                window.location.href = "dashboard.html";
+                return;
             }
-
-            // Nếu không đăng nhập thành công
-            if (!isLoggedIn) {
-                msg.style.color = "red";
-                msg.textContent = "Sai tên đăng nhập hoặc mật khẩu cho vai trò đã chọn!";
-            }
-
-        } catch (error) {
-            console.error("Lỗi: ", error);
-            msg.style.color = "red";
-            msg.textContent = "Lỗi hệ thống: Không thể đọc dữ liệu cần thiết!";
         }
+
+        if (role === "user") {
+            const res = await fetch("users.json");
+            const users = await res.json();
+
+            const user = users.find(u =>
+                (u.username === userInput || u.email === emailPhone || u.phone === emailPhone) &&
+                u.password === password
+            );
+
+            if (user) {
+                msg.style.color = "green";
+                msg.textContent = "Đăng nhập thành công!";
+                window.location.href = "index.html";
+                return;
+            }
+        }
+
+        msg.style.color = "red";
+        msg.textContent = "Sai tài khoản hoặc mật khẩu!";
+
+    } catch (err) {
+        console.error(err);
+        msg.style.color = "red";
+        msg.textContent = "Không đọc được dữ liệu!";
     }
+}
 </script>
-  </script>
+
 </body>
 </html>

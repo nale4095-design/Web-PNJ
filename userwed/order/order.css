@@ -64,3 +64,8 @@ body {
     border: none;
     cursor: pointer;
 }
+.error {
+    color: red;
+    font-size: 13px;
+    display: block;
+}

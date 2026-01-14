@@ -14,7 +14,7 @@
   gap: 10px;
 }
 .back__home{
-color: ;
+color:yellow ;
 }
 
 .back-home:hover {
@@ -70,10 +70,78 @@ color: ;
   border-radius: 8px;
   cursor: pointer;
 }
+/* footer */
+.footer {
+  background: #fff;
+  font-family: Arial, sans-serif;
+  color: #333;
+  border-top: 1px solid #ddd;
+  margin-top: 40px;
+}
 
-@media (max-width: 768px) {
-  .button {
-    width: 100%;
-    text-align: center;
-  }
+/* Nội dung chính 4 cột */
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer__col h2 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.footer__col p {
+  margin: 5px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer__col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__col ul li {
+  margin-bottom: 8px;
+}
+
+.footer__col a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer__col a:hover {
+  color: #0077b6;
+}
+
+
+/* css giỏ hàng */
+.cart-count {
+  background: #d48806;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

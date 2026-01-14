@@ -28,7 +28,7 @@
 
   <!-- CSS custom -->
   <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="./style.css" />
+  
 </head>
 
 <body>
@@ -53,13 +53,12 @@
         </p>
       </div>
       <div class="sudHeader__right">
-        <p>
-          <img src="https://cdn.pnj.io/images/2023/user-regular.svg" alt="" />Tài khoản của tôi
-        </p>
-        <p>
-          <img class="img-iconTopRR" src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg"
-            alt="Giỏ hàng" />Giỏ hàng
-        </p>
+     <a href="../cart/cart.html" class="cart-link">
+  <img src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg">
+  <span>Giỏ hàng</span>
+  <span class="cart-count">3</span>
+</a>
+
       </div>
     </div>
     <hr />
@@ -75,10 +74,14 @@
           <li>Khuyến mãi</li>
         </ul>
       </div>
-      <!-- <div class="nav__right">
-        <input type="text" />
-        <button><i class="fa fa-search"></i></button>
-      </div> -->
+<div class="search-wrapper">
+    <input type="text" id="searchInput" placeholder="Tìm sản phẩm...">
+    <div class="search-result"></div>
+</div>
+
+
+
+<div id="product-list" class="product-list"></div>
     </nav>
   </header>
 

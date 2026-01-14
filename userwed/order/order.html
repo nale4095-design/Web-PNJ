@@ -9,7 +9,7 @@
 
 <div class="container">
 
-    <a href="index.html" class="back">← Quay lại</a>
+    <a href="../../index.html" class="back">← Quay lại</a>
 
     <h2>THÔNG TIN ĐẶT HÀNG</h2>
 
@@ -20,7 +20,7 @@
             <p><b>Tên sản phẩm:</b> <span id="productName"></span></p>
             <p><b>Số lượng:</b> <input type="number" id="qty" value="1" min="1"></p>
             <p><b>Đơn giá:</b> <span id="productPrice"></span> ₫</p>
-            <p><b>Tổng:</b> <span id="total"></span> ₫</p>
+            <p><b>Tổng:</b> <span id="total"></span> VNĐ</p>
         </div>
     </div>
 
@@ -29,14 +29,19 @@
         <button>Áp dụng</button>
     </div>
 
-    <h3>Thông tin người mua</h3>
-    <div class="form-grid">
-        <input type="text" placeholder="Họ và tên">
-        <input type="text" placeholder="Địa chỉ">
-        <input type="email" placeholder="Email">
-        <input type="text" placeholder="Số điện thoại">
-    </div>
+<h3>Thông tin người mua</h3>
 
+<input id="customerName" placeholder="Họ và tên">
+<span id="nameError" class="error"></span>
+
+<input id="customerAddress" placeholder="Địa chỉ">
+<span id="addressError" class="error"></span>
+
+<input id="customerEmail" placeholder="Email">
+<span id="emailError" class="error"></span>
+
+<input id="customerPhone" placeholder="Số điện thoại">
+<span id="phoneError" class="error"></span>
     <h3>Hình thức thanh toán</h3>
     <p>Thanh toán khi nhận hàng</p>
 

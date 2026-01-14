@@ -34,13 +34,14 @@
         <img src="https://cdn.pnj.io/images/logo/pnj.com.vn.png" alt="logoPNJ" />
       </div>
       <div class="sudHeader__right">
-        <p>
-          <img src="https://cdn.pnj.io/images/2023/user-regular.svg" alt="" />Tài khoản của tôi
-        </p>
-        <p>
-          <img class="img-iconTopRR" src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg"
-            alt="Giỏ hàng" />Giỏ hàng
-        </p>
+    
+ <a href="../cart/cart.html" class="cart-link">
+  <img src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg">
+  <span>Giỏ hàng</span>
+  <span class="cart-count">3</span>
+</a>
+
+
       </div>
     </div>
     <hr />
@@ -56,41 +57,39 @@
           <li>Khuyến mãi</li>
         </ul>
       </div>
-      <div class="nav__right">
-        <input type="text" />
-        <button><i class="fa fa-search"></i></button>
-      </div>
-    </nav>
   </header>
   <a href="../../index.html" class="back__home"><i class="fi-home"></i>Quay lại</a>
   <!-- Chỗ hiển thị chi tiết sản phẩm -->
 
-  <div class="detail">
-    <div class="detail__content">
-      <div class="detail__left">
-        <div class="nav__img"></div>
-        <div class="detail__img"></div>
+ <div class="detail">
+  <div class="detail__content">
 
-      </div>
-      <div class="detail__text">
-        <h2 class="detail__name"></h2>
-        <p class="detail__price"></p>
-        <p class="detail__saleInfo"></p>
-        <p class="detail__type"></p>
-        <h3>Thông số chi tiết:</h3>
-        <ul class="detail__params"></ul>
-        <h3>Mô tả:</h3>
-        <p class="detail__desc"></p>
-        <button class="button" onclick="addToCart()">Thêm vào giỏ</button>
-
-        <a id="orderBtn" href="../order/order.html">Đặt hàng</a>
-
-
-
-      </div>
+    <div class="detail__left">
+      <div class="nav__img"></div>
+      <div class="detail__img"></div>
     </div>
 
-  </div>
+    <div class="detail__text">
+      <h2 class="detail__name"></h2>
+      <p class="detail__price"></p>
+      <p class="detail__saleInfo"></p>
+      <p class="detail__type"></p>
+
+      <h3>Thông số chi tiết:</h3>
+      <ul class="detail__params"></ul>
+
+      <h3>Mô tả:</h3>
+      <p class="detail__desc"></p>
+
+      <div class="action-buttons">
+        <button id="addToCartBtn">Thêm vào giỏ hàng</button>
+        <a id="orderBtn" href="#">Đặt hàng</a>
+      </div>
+    </div> 
+  </div> 
+</div> 
+
+
 
   <!-- footer -->
   <footer class="footer">
@@ -158,6 +157,8 @@
       <h6>Thanh toán khi nhận hàng</h6>
     </div>
     </div>
+   
+      <div>
   </footer>
 
   <!-- axios để gọi API -->
@@ -165,6 +166,7 @@
 
   <!-- JS của trang detail -->
   <script src="./detail.js"></script>
+  <script src="../main.js"></script>
 
 </body>
 

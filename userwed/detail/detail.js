@@ -1,109 +1,113 @@
-// lấy giá trị của tham số id từ URL
-function getId() {
-  let urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("id");
-}
-async function getData() {
-  let id = getId();
-  try {
 
-   let res = await axios.get(`http://localhost:3000/product/${id}`);
-    let product = res.data;
+// 1. Lấy ID từ URL
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("id");
 
-    if (!product) return;
-
-    // Render ảnh chính (mặc định)
-    document.querySelector(".detail__img").innerHTML = `
-      <img src="${product.img}" alt="Ảnh chính" width="300">
-    `;
-
-    // Render ảnh phụ
-    renderNavImg(product);
-
-    // Render thông tin sản phẩm
-    document.querySelector(".detail__name").textContent = product.name;
-    document.querySelector(".detail__price").textContent = `Giá: ${Number(product.price).toLocaleString()} VND`;
-    document.querySelector(".detail__saleInfo").textContent = `Sale Info: ${product.saleInfo}`;
-    document.querySelector(".detail__type").textContent = `Loại: ${product.type}`;
-
-    // Render thông số chi tiết
-    const ulParams = document.querySelector(".detail__params");
-    ulParams.innerHTML = "";
-    product.desPar.params.forEach(param => {
-      const li = document.createElement("li");
-      li.textContent = param;
-      ulParams.appendChild(li);
-    });
-
-    // Render mô tả
-    document.querySelector(".detail__desc").textContent = product.desPar.desc;
-
-  } catch (err) {
-    console.error("Lỗi khi load dữ liệu:", err);
-  }
+if (!productId) {
+    alert("Không tìm thấy sản phẩm!");
+    history.back();
 }
 
-// Render ảnh phụ
-function renderNavImg(product) {
-  const navContainer = document.querySelector(".nav__img");
-  navContainer.innerHTML = "";
-  product.subImgs.forEach(url => {
-    const img = document.createElement("img");
-    img.src = url;
-    img.width = 80;
-    img.style.cursor = "pointer";
-    img.style.marginRight = "5px";
+// =========================
+// 2. Load dữ liệu sản phẩm
+// =========================
+async function loadProduct() {
+    try {
+      const res = await axios.get(`http://localhost:3000/product/${productId}`);
 
-    img.addEventListener("click", () => {
-      console.log("Ảnh được click:", url);
-      document.querySelector(".detail__img").innerHTML = `<img src="${url}" alt="Ảnh chính" width="300">`;
-    });
+        const p = res.data;
 
-    navContainer.appendChild(img);
-  });
-}
+        // Ảnh chính
+        document.querySelector(".detail__img").innerHTML = `<img src="${p.img}" width="300">`;
 
-getData();
+        // Ảnh phụ
+        renderSubImages(p);
 
-// lấy dữ liệu từ  local stotage
-function getCarts() {
-  let data = localStorage.getItem("cart")
-  return data ? JSON.parse(data) : []
-}
+        // Thông tin
+        document.querySelector(".detail__name").textContent = p.name;
+        document.querySelector(".detail__price").textContent = Number(p.price).toLocaleString() + "₫";
+        document.querySelector(".detail__saleInfo").textContent = p.saleInfo;
+        document.querySelector(".detail__type").textContent = p.type;
 
-// luu dữ liệu vào local storgate
-function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
+        // Thông số
+        const ul = document.querySelector(".detail__params");
+        ul.innerHTML = "";
+        p.desPar.params.forEach(item => {
+            let li = document.createElement("li");
+            li.textContent = item;
+            ul.appendChild(li);
+        });
 
-// hàm adđtocats
-function addToCart() {
-  let Cart = getCarts()
-  let id = getId()
-  let newCart = {
-    id: Date.now(),
-    idProduct: id,
-    qlty: 1
-  };
-  let findIndex = Cart.findIndex((item) => {
-    return id == item.idProduct
-  })
+        // Mô tả
+        document.querySelector(".detail__desc").textContent = p.desPar.desc;
 
- if (findIndex === -1) {
-  Cart.push(newCart); 
-} else {
-  Cart[findIndex].qlty++; 
-}
+        // Gán data cho nút Thêm vào giỏ
+        const addBtn = document.getElementById("addToCartBtn");
+        if (addBtn) {
+            addBtn.dataset.id = p.id;
+            addBtn.dataset.name = p.name;
+            addBtn.dataset.price = p.price;
+            addBtn.dataset.img = p.img;
+        }
 
-  saveCart(Cart)
-  //  console.log("Đã lưu giỏ hàng:", cart);
-}
-document.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get("id");
+        // Gắn nút Order
+        const orderBtn = document.getElementById("orderBtn");
+        if (orderBtn) {
+            orderBtn.href = `../order/order.html?id=${p.id}`;
+        }
 
-    const orderBtn = document.getElementById("orderBtn");
-    if (orderBtn) {
-        orderBtn.href = `../order/order.html?id=${productId}`;
+    } catch (err) {
+        console.error("Lỗi load sản phẩm:", err);
     }
+}
+
+// =========================
+// 3. Render ảnh phụ
+// =========================
+function renderSubImages(product) {
+    const nav = document.querySelector(".nav__img");
+    nav.innerHTML = "";
+    product.subImgs.forEach(url => {
+        let img = document.createElement("img");
+        img.src = url;
+        img.width = 80;
+        img.style.cursor = "pointer";
+        img.onclick = () => {
+            document.querySelector(".detail__img").innerHTML = `<img src="${url}" width="300">`;
+        };
+        nav.appendChild(img);
+    });
+}
+
+// ==========================
+// 4. Thêm vào giỏ hàng (chỉ 1 listener)
+// ==========================
+document.addEventListener("click", function(e){
+    const btn = e.target.closest("#addToCartBtn");
+    if(!btn) return;
+
+    const id = btn.dataset.id.toString(); // nhất quán string
+    const name = btn.dataset.name;
+    const price = Number(btn.dataset.price);
+    const img = btn.dataset.img;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let item = cart.find(p => p.id === id);
+
+    if(item){
+        item.quantity++;
+    } else {
+        cart.push({id, name, price, img, quantity:1});
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    if(typeof updateCartCount === "function") updateCartCount();
+    alert("✔ Đã thêm vào giỏ hàng!");
 });
+
+
+// =========================
+// 6. Load sản phẩm
+// =========================
+loadProduct();
