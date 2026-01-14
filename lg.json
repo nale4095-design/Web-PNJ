@@ -1,0 +1,67 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "name": "Lan",
+      "age": 20
+    },
+    {
+      "id": "2",
+      "name": "Huy",
+      "age": 21
+    },
+    {
+      "id": "7d79",
+      "username": "nhu",
+      "email": "ngquynhnhu3006@gmail.com",
+      "phone": "0394622073",
+      "password": "12345"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "user1",
+      "email": "user1@gmail.com",
+      "phone": "0909123456",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "username": "ngocanh",
+      "email": "anh22@gmail.com",
+      "phone": "0911222333",
+      "password": "anh123"
+    },
+    {
+      "id": "bc96",
+      "username": "nhu",
+      "email": "ngquynhnhu3006@gmail.com",
+      "phone": "0394622073",
+      "password": "12345"
+    }
+  ],
+  "admins": [
+    {
+      "id": "1",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "phone": "0000",
+      "password": "admin123"
+    },
+    {
+      "id": "2",
+      "username": "superadmin",
+      "email": "super@gmail.com",
+      "phone": "1111",
+      "password": "super123"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "iPhone",
+      "price": 20000
+    }
+  ]
+}
