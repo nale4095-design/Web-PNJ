@@ -23,8 +23,9 @@ function render(list) {
                 <td><img src="${item.img}" alt=""></td>
                 <td>${item.price}</td>
                 <td>
-                    <button class="btn-edit" onclick="editProduct(${item.id})">Sửa</button>
-                    <button class="btn-delete" onclick="deleteProduct(${item.id})">Xóa</button>
+                 <button class="btn-edit" onclick="editProduct('${item.id}')">Sửa</button>
+<button class="btn-delete" onclick="deleteProduct('${item.id}')">Xóa</button>
+
                 </td>
             </tr>
         `;
@@ -33,15 +34,16 @@ function render(list) {
 
 // Xóa sản phẩm
 function deleteProduct(id) {
-    if (confirm("Bạn có chắc muốn xóa sản phẩm này?") === false) return;
+    if (!confirm("Bạn có chắc muốn xóa sản phẩm này?")) return;
 
-    fetch(`${API}/${id}`, {
-        method: "DELETE"
-    })
-    .then(() => location.reload());
+    fetch(`${API}/${id}`, { method: "DELETE" })
+        .then(() => location.reload());
 }
+
 
 // Sửa sản phẩm
 function editProduct(id) {
-    alert("Sửa sản phẩm ID: " + id + " (mình sẽ làm form cho bạn tiếp)");
+    window.location.href = "../edit/edit.html?id=" + id;
+
+
 }
